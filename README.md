@@ -1,7 +1,7 @@
 # League Win-Lose Prediction Model
 By Minchan Kim and David Moon
 
-This project was made for DSC80 at UCSD where we took data from professionally played League of Legends matches in 2022 to clean, analyze, and make a prediction model in order to see whether a team will win or not based on different features. The purpose of this website is to report our findings and our tests. Our exploratory data analysis page can be found [here](https://m1nce.github.io/Gold-Lead-Analysis/)
+This project was made for DSC80 at UCSD where we took data from professionally played League of Legends matches in 2022 to clean, analyze, and make a prediction model in order to see whether a team will win or not based on different features. The purpose of this website is to report our findings and our tests. Our exploratory data analysis page can be found [here](https://m1nce.github.io/Gold-Lead-Analysis/). We will be using the same dataset and most of our data will be cleaned the same way we did in our analysis so make sure to check out that page to understand what columns we removed and saved.
 
 # Introduction / Framing the Problem
 
