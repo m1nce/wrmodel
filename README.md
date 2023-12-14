@@ -33,11 +33,11 @@ All of the columns in our categorical features  except for our `'side'` column w
 
 Conclusion from Baseline:
 
-After running our model, we had an accuracy of about 0.68. This means that our model is getting there, but definitely still has some work to do. We think that the our model isn’t necessarily the best but also not the worst. We believe that having small leads by getting the first dragon or herald, and in gold, experience, and/or creep score have some indication on predicting a teams’ outcome but these leads may not be decisive factors in determining the final result. Crucial game-changing events like obtaining the Baron, securing the Dragon Soul, or winning significant teamfights typically occur later in the game. Therefore, while our model captures some aspects of early game dynamics, it may not fully account for the more impactful events that happen later on into the game.
+After running our model, we had an accuracy of about 0.68. This means that our model is getting there, but definitely still has some work to do. We think that the our model isn’t necessarily the best but also not the worst. We believe that having small leads by getting the first dragon or herald, and in gold, experience, and/or creep score have some indication on predicting a teams’ outcome but these leads may not be decisive factors in determining the final result. Crucial game-changing events like obtaining the Baron, securing the Dragon Soul, or winning significant team fights typically occur later in the game. Therefore, while our model captures some aspects of early game dynamics, it may not fully account for the more impactful events that happen later on in the game.
 
 # Final Model
 
-For our final model, we decided to remove all of the data that only ascertains to the first 10 minutes of the game as it is too early to tell what the outcome of the game will be at this point. 
+For our final model, we decided to remove all the data that pertains only to the first 10 minutes of the game, as it is too early to predict the outcome of the game at that point.
 
 In its place, we used data that would contain aggregates on what happened throughout the entire game, rather than just a small segment of it. We decided to use:
 
@@ -55,9 +55,9 @@ We binarized `'towers'` to 4 because the minimum number of towers needed to win 
 
 Only three columns - `'team kpm'`, `'dpm'`, and `'earned gpm'` - are standardized as this data contains larger numbers and/or contains numbers that are mainly below 1. Since the rest of the columns contain integer data, standardizing the previously defined columns allows easier understanding and use.
 
-After running the columns through the pipeline and running DecisionTreeClassifier, we discovered that the accuracy is roughly 0.962. We then decided to implement GridSearch on the pipeline to get the hyperparameters that would perform the best. After fitting it on the train data, we were able to see that the hyperparameters of gini, 20 max depth, 4 minimum samples per leaf, and 2 minimum samples for each split were the best. After applying the best parameters in our model, we found that the accuracy improved slighty to an accuracy score of 0.968.
+After running the columns through the pipeline and running DecisionTreeClassifier, we discovered that the accuracy is about 0.963. We then decided to implement GridSearch on the pipeline to get the hyperparameters that would perform the best. After fitting it on the train data, we were able to see that the hyperparameters of gini, max depth of none, 4 minimum samples per leaf, and 5 minimum samples for each split were the best. After applying the best parameters in our model, we found that the accuracy improved slightly to an accuracy score of 0.968.
 
-We believe these columns are the best since they give a more comprehensive picture of what the game shaped out to be in the end. Unlike the 10 minute mark, we are able to use the aggregates to have a holistic view of the overall performance of teams and use this information to more accurately predict win/loss.
+We believe these columns are the best since they give a more comprehensive picture of what the game shaped out to be in the end. Unlike the 10-minute mark, we are able to use the aggregates to have a holistic view of the overall performance of teams and use this information to more accurately predict win/loss.
 
 Thus, GridSearch is likely much better than our baseline model due to the hyperparameters we discovered and the different columns we used.
 
