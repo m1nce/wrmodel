@@ -67,11 +67,11 @@ Thus, GridSearch is likely much better than our baseline model due to the hyperp
 **Null Hypothesis:** Our model is fair. Its accuracy for the Blue and Red side are roughly the same, and any differences are due to random chance. <br />
 **Alternate Hypothesis:** Our model is unfair. The Blue side’s accuracy is different from the Red side’s accuracy. <br />
 **Test Statistic:** Total Variation Distance between the accuracy of Red side and Blue side. <br />
-**Observed Statistic** 0.0217
+**Observed Statistic** 0.0217 <br />
 **Significance Level:** 0.05
 
 We did permutation testing by shuffling the sides 1000 times and observing if the accuracy would be different compared to the observed statistic. 
 
-**Conclusion:** Based on our test statistics, p-value of 1, the difference in accuracy across the two groups seems significant.
+**Conclusion:** Based on our test statistics, p-value of 1.0, the difference in accuracy across the two groups seems significant.
 
 Therefore, we fail to reject our null hypothesis which states that the accuracy between the Blue and Red side are the same. 
