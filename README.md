@@ -55,7 +55,7 @@ We binarized `'towers'` to 4 because the minimum number of towers needed to win 
 
 Only three columns - `'team kpm'`, `'dpm'`, and `'earned gpm'` - are standardized as this data contains larger numbers and/or contains numbers that are mainly below 1. Since the rest of the columns contain integer data, standardizing the previously defined columns allows easier understanding and use.
 
-After running the columns through the pipeline and running DecisionTreeClassifier, we discovered that the accuracy is roughly 0.96. We then decided to implement GridSearch on the pipeline to get the hyperparameters that would perform the best. After fitting it on the train data, we were able to see that the hyperparameters of ____, ____ max depth, ___ minimum samples per leaf, and ___ minimum samples for each split were the best. 
+After running the columns through the pipeline and running DecisionTreeClassifier, we discovered that the accuracy is roughly 0.962. We then decided to implement GridSearch on the pipeline to get the hyperparameters that would perform the best. After fitting it on the train data, we were able to see that the hyperparameters of gini, 20 max depth, 4 minimum samples per leaf, and 2 minimum samples for each split were the best. After applying the best parameters in our model, we found that the accuracy improved slighty to an accuracy score of 0.968.
 
 We believe these columns are the best since they give a more comprehensive picture of what the game shaped out to be in the end. Unlike the 10 minute mark, we are able to use the aggregates to have a holistic view of the overall performance of teams and use this information to more accurately predict win/loss.
 
@@ -67,6 +67,7 @@ Thus, GridSearch is likely much better than our baseline model due to the hyperp
 **Null Hypothesis:** Our model is fair. Its accuracy for the Blue and Red side are roughly the same, and any differences are due to random chance. <br />
 **Alternate Hypothesis:** Our model is unfair. The Blue side’s accuracy is different from the Red side’s accuracy. <br />
 **Test Statistic:** Total Variation Distance between the accuracy of Red side and Blue side. <br />
+**Observed Statistic** 0.0217
 **Significance Level:** 0.05
 
 We did permutation testing by shuffling the sides 1000 times and observing if the accuracy would be different compared to the observed statistic. 
