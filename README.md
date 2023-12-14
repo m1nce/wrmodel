@@ -43,9 +43,9 @@ In its place, we used data that would contain aggregates on what happened throug
 
 Quantitative features: `'team kpm'`, `'barons'`, `'dpm'`, `'earned gpm'`, `'inhibitors'`, `'elders'`, `'dragons'`, and `'towers'`.
 
-Nominal Features: `'firsttothreetowers'` [`'1'` indicating the team was the first to destroy three towers, and `'0'` otherwise.]
+Nominal Features: `'firsttothreetowers'` (`'1'` indicating the team was the first to destroy three towers, and `'0'` otherwise.)
 
-Response Variable: Win or loss [`'1'` indicating a win, `'0'` indicating a loss]
+Response Variable: Win or loss (`'1'` indicating a win, `'0'` indicating a loss)
 
 For our final model, we applied ColumnTransformer to 5 different columns: 
 Binarizer with a threshold value of 4 on `'towers'`
