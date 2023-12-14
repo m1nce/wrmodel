@@ -34,3 +34,45 @@ All of the columns in our categorical features  except for our `'side'` column w
 Conclusion from Baseline:
 
 After running our model, we had an accuracy of about 0.68. This means that our model is getting there, but definitely still has some work to do. We think that the our model isn’t necessarily the best but also not the worst. We believe that having small leads by getting the first dragon or herald, and in gold, experience, and/or creep score have some indication on predicting a teams’ outcome but these leads may not be decisive factors in determining the final result. Crucial game-changing events like obtaining the Baron, securing the Dragon Soul, or winning significant teamfights typically occur later in the game. Therefore, while our model captures some aspects of early game dynamics, it may not fully account for the more impactful events that happen later on into the game.
+
+# Final Model
+
+For our final model, we decided to remove all of the data that only ascertains to the first 10 minutes of the game as it is too early to tell what the outcome of the game will be at this point. 
+
+In its place, we used data that would contain aggregates on what happened throughout the entire game, rather than just a small segment of it. We decided to use:
+
+Quantitative features: `'team kpm'`, `'barons'`, `'dpm'`, `'earned gpm'`, `'inhibitors'`, `'elders'`, `'dragons'`, and `'towers'`.
+
+Nominal Features: `'firsttothreetowers'` [`'1'` indicating the team was the first to destroy three towers, and `'0'` otherwise.]
+
+Response Variable: Win or loss [`'1'` indicating a win, `'0'` indicating a loss]
+
+For our final model, we applied ColumnTransformer to 5 different columns: 
+Binarizer with a threshold value of 4 on `'towers'`
+OneHotEncoder on `'side'`
+StandardScaler on `'team kpm'`, `'dpm'`, and `'earned gpm'`
+We binarized `'towers'` to 4 because the minimum number of towers needed to win (destroy the nexus) is 5. This is assuming that teams do not forfeit, and will play out the games until the nexus is ultimately destroyed. 
+
+Only three columns - `'team kpm'`, `'dpm'`, and `'earned gpm'` - are standardized as this data contains larger numbers and/or contains numbers that are mainly below 1. Since the rest of the columns contain integer data, standardizing the previously defined columns allows easier understanding and use.
+
+After running the columns through the pipeline and running DecisionTreeClassifier, we discovered that the accuracy is roughly 0.96. We then decided to implement GridSearch on the pipeline to get the hyperparameters that would perform the best. After fitting it on the train data, we were able to see that the hyperparameters of ____, ____ max depth, ___ minimum samples per leaf, and ___ minimum samples for each split were the best. 
+
+We believe these columns are the best since they give a more comprehensive picture of what the game shaped out to be in the end. Unlike the 10 minute mark, we are able to use the aggregates to have a holistic view of the overall performance of teams and use this information to more accurately predict win/loss.
+
+Thus, GridSearch is likely much better than our baseline model due to the hyperparameters we discovered and the different columns we used.
+
+# Fairness Analysis
+
+## Fairness group choice: Does playing on the Blue side contain different predictions from playing on the Red side? 
+
+## Null Hypothesis: Our model is fair. Its accuracy for the Blue and Red side are roughly the same, and any differences are due to random chance.
+## Alternate Hypothesis: Our model is unfair. The Blue side’s accuracy is different from the Red side’s accuracy.
+## Test Statistic: Total Variation Distance between the accuracy of Red side and Blue side.
+## Significance Level: 0.05
+
+We did permutation testing by shuffling the sides 1000 times and observing if the accuracy would be different compared to the observed statistic. 
+
+## Conclusion: 
+Based on our test statistics, p-value of 1, the difference in accuracy across the two groups seems significant.
+
+Therefore, we fail to reject our null hypothesis which states that the accuracy between the Blue and Red side are the same. 
