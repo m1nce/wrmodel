@@ -63,16 +63,15 @@ Thus, GridSearch is likely much better than our baseline model due to the hyperp
 
 # Fairness Analysis
 
-## Fairness group choice: Does playing on the Blue side contain different predictions from playing on the Red side? 
+**Fairness group choice:** Does playing on the Blue side contain different predictions from playing on the Red side? 
 
-## Null Hypothesis: Our model is fair. Its accuracy for the Blue and Red side are roughly the same, and any differences are due to random chance.
-## Alternate Hypothesis: Our model is unfair. The Blue side’s accuracy is different from the Red side’s accuracy.
-## Test Statistic: Total Variation Distance between the accuracy of Red side and Blue side.
-## Significance Level: 0.05
+**Null Hypothesis:** Our model is fair. Its accuracy for the Blue and Red side are roughly the same, and any differences are due to random chance.
+**Alternate Hypothesis:** Our model is unfair. The Blue side’s accuracy is different from the Red side’s accuracy.
+**Test Statistic:** Total Variation Distance between the accuracy of Red side and Blue side.
+**Significance Level:** 0.05
 
 We did permutation testing by shuffling the sides 1000 times and observing if the accuracy would be different compared to the observed statistic. 
 
-## Conclusion: 
-Based on our test statistics, p-value of 1, the difference in accuracy across the two groups seems significant.
+**Conclusion:** Based on our test statistics, p-value of 1, the difference in accuracy across the two groups seems significant.
 
 Therefore, we fail to reject our null hypothesis which states that the accuracy between the Blue and Red side are the same. 
